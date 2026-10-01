@@ -1,0 +1,13 @@
+# Begin Block Direct Access to Errors Folder
+RewriteCond %{REQUEST_URI} ^/errors/
+RewriteCond %{REQUEST_URI} !^/errors/index\.php$
+RewriteCond %{REQUEST_URI} !^/errors/assets/
+RewriteRule ^ - [F,L]
+# End Block Direct Access to Errors Folder
+
+# Begin Errors Redirect Engine
+ErrorDocument 403 /errors/index.php
+ErrorDocument 404 /errors/index.php
+ErrorDocument 500 /errors/index.php
+ErrorDocument 503 /errors/index.php
+# End Errors Redirect Engine
