@@ -10,7 +10,7 @@ Features
 
 Custom HTTP error pages
 
-Supports 403, 404, 500, and 503
+Support for HTTP status codes 403, 404, 500, and 503
 
 Framework-independent PHP architecture
 
@@ -51,62 +51,11 @@ The routing logic supports HTTP status codes from 400 through 599. Additional er
 
 How It Works
 
-The system uses the web server's error handling mechanism to route HTTP errors to a central PHP entry point.
+The system uses Apache's ErrorDocument mechanism to route HTTP errors to a central PHP entry point.
 
-HTTP Error
-    ↓
-Apache ErrorDocument
-    ↓
-/errors/index.php
-    ↓
-includes/lib.php
-    ↓
-Detect HTTP Status Code
-    ↓
-template-parts/{code}/index.php
-    ↓
-includes/index.php
-    ↓
-header.php
-    ↓
-Error Content
-    ↓
-footer.php
+The requested HTTP status code is detected by the application, and the corresponding error template is loaded. Each error template provides its own status code, icon, title, and message while using the shared application layout.
 
-
-This keeps error detection, templates, layout, assets, and reusable functionality separated.
-
-Project Structure
-errors/
-├── assets/
-│   ├── component/
-│   │   └── global.js
-│   ├── fonts/
-│   │   ├── Inter/
-│   │   ├── JetBrainsMono/
-│   │   └── Manrope/
-│   └── styles/
-│       └── global.css
-├── includes/
-│   ├── functions.php
-│   ├── icons.php
-│   ├── index.php
-│   └── lib.php
-├── template-parts/
-│   ├── 403/
-│   │   └── index.php
-│   ├── 404/
-│   │   └── index.php
-│   ├── 500/
-│   │   └── index.php
-│   └── 503/
-│       └── index.php
-├── footer.php
-├── header.php
-├── index.php
-├── THIRD-PARTY-NOTICES.md
-├── LICENSE
-└── README.md
+This approach keeps error detection, templates, layout, assets, and reusable functionality separated.
 
 Requirements
 
@@ -121,7 +70,7 @@ A web-accessible directory for the project
 No Composer, Node.js, npm, or external PHP package is required.
 
 Installation
-1. Upload the Project
+Upload the Project
 
 Upload the project directory to your website's document root.
 
@@ -136,7 +85,7 @@ The important requirement is that the project is publicly accessible through a U
 
 https://example.com/errors/
 
-2. Configure Apache ErrorDocument
+Configure Apache ErrorDocument
 
 The .htaccess file belongs to your website's document root, not inside this project.
 
@@ -173,7 +122,7 @@ If you upload the project to a different public directory, change the ErrorDocum
 
 The .htaccess configuration is a server-level deployment requirement and is intentionally not included in this repository.
 
-3. Test the Error Pages
+Test the Error Pages
 
 After configuring Apache, test the error pages.
 
@@ -209,14 +158,17 @@ The site-name generation logic can be customized in includes/functions.php when 
 
 Error Templates
 
-Each HTTP error has its own template directory:
+Each HTTP error has its own template.
 
-template-parts/
-├── 403/
-├── 404/
-├── 500/
-└── 503/
+The currently included templates are:
 
+403 — Access Denied
+
+404 — Page Not Found
+
+500 — Internal Server Error
+
+503 — Service Unavailable
 
 Each template defines its status code, icon, title, and message before loading the shared layout.
 
@@ -230,19 +182,19 @@ $error = [
 ];
 
 
-The shared layout is then loaded through:
+The shared layout is loaded through:
 
 includes/index.php
 
 Adding a New Error Page
 
-To add another HTTP error page, create a directory for the status code.
+The routing logic supports HTTP status codes from 400 through 599.
 
-For example, to add 429:
+To add another error page, create a template for the desired status code.
 
-template-parts/
-└── 429/
-    └── index.php
+For example, to add HTTP status code 429, create:
+
+template-parts/429/index.php
 
 
 Then define the error information:
@@ -261,9 +213,7 @@ $error = [
 require __DIR__ . '/../../includes/index.php';
 
 
-The existing routing logic already supports status codes from 400 through 599.
-
-You can then configure Apache if the server or application needs to route that status code to the custom error entry point:
+If Apache needs to route status code 429 to the custom error system, add:
 
 ErrorDocument 429 /errors/index.php
 
@@ -278,26 +228,27 @@ The current system includes icons for:
 
 Access restriction
 
-Navigation / missing page
+Navigation and missing pages
 
-Server error
+Server errors
 
 Service unavailable
 
-Security / return action
+Security and return actions
 
-Generic alert
+Generic alerts
 
 Additional icons can be added to the same file and referenced by the error templates.
 
 Assets
 
-Frontend assets are organized into separate directories:
+Frontend assets are organized into three main areas:
 
-assets/
-├── component/
-├── fonts/
-└── styles/
+assets/component/ — JavaScript components
+
+assets/fonts/ — Local font files
+
+assets/styles/ — CSS stylesheets
 
 CSS
 
@@ -310,7 +261,7 @@ The layout uses Flexbox and does not depend on a CSS framework.
 
 JavaScript
 
-The project currently includes a minimal JavaScript entry point:
+The project includes a minimal JavaScript entry point:
 
 assets/component/global.js
 
@@ -326,7 +277,7 @@ For example:
 /assets/styles/global.css?ver=1234567890
 
 
-This helps prevent browsers from serving an outdated cached version after an asset is updated.
+This helps prevent browsers from serving outdated cached assets after a file is updated.
 
 Fonts
 
@@ -350,7 +301,7 @@ Corporate visual structure
 
 Modern editorial typography
 
-Developer / engineering aesthetics
+Developer and engineering aesthetics
 
 Premium product-style presentation
 
