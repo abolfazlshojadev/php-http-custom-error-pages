@@ -1,0 +1,386 @@
+@font-face {
+font-family: "Inter";
+src: url("../fonts/Inter/Inter.eot");
+src: url("../fonts/Inter/Inter.eot?#iefix") format("embedded-opentype"),
+url("../fonts/Inter/Inter.woff2") format("woff2"),
+url("../fonts/Inter/Inter.woff") format("woff"),
+url("../fonts/Inter/Inter.ttf") format("truetype"),
+url("../fonts/Inter/Inter.svg#Inter") format("svg");
+font-weight: 400;
+font-style: normal;
+font-display: swap;
+}
+
+@font-face {
+font-family: "Manrope";
+src: url("../fonts/Manrope/Manrope.eot");
+src: url("../fonts/Manrope/Manrope.eot?#iefix") format("embedded-opentype"),
+url("../fonts/Manrope/Manrope.woff2") format("woff2"),
+url("../fonts/Manrope/Manrope.woff") format("woff"),
+url("../fonts/Manrope/Manrope.ttf") format("truetype"),
+url("../fonts/Manrope/Manrope.svg#Manrope") format("svg");
+font-weight: 400;
+font-style: normal;
+font-display: swap;
+}
+
+@font-face {
+font-family: "JetBrainsMono";
+src: url("../fonts/JetBrainsMono/JetBrainsMono.eot");
+src: url("../fonts/JetBrainsMono/JetBrainsMono.eot?#iefix") format("embedded-opentype"),
+url("../fonts/JetBrainsMono/JetBrainsMono.woff2") format("woff2"),
+url("../fonts/JetBrainsMono/JetBrainsMono.woff") format("woff"),
+url("../fonts/JetBrainsMono/JetBrainsMono.ttf") format("truetype"),
+url("../fonts/JetBrainsMono/JetBrainsMono.svg#JetBrainsMono") format("svg");
+font-weight: 400;
+font-style: normal;
+font-display: swap;
+}
+
+* {
+box-sizing: border-box;
+}
+
+html,
+body {
+margin: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+overflow-x: hidden;
+overflow-y: hidden;
+}
+
+body {
+font-family: "Manrope", sans-serif;
+background: #f5f6f7;
+color: #15171a;
+}
+
+.error-page {
+width: 100%;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 40px 24px;
+overflow-x: hidden;
+overflow-y: hidden;
+}
+
+.error-shell {
+width: min(1120px, 100%);
+height: calc(100vh - 80px);
+display: flex;
+flex-direction: column;
+background: #ffffff;
+border: 1px solid #dfe2e5;
+border-radius: 14px;
+box-shadow: 0 12px 35px rgba(21, 23, 26, .08);
+overflow: hidden;
+}
+
+.error-topbar {
+height: 72px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 40px;
+border-bottom: 1px solid #e5e7e9;
+flex-shrink: 0;
+}
+
+.error-brand {
+font-family: "Inter", sans-serif;
+font-size: 14px;
+font-weight: 700;
+letter-spacing: .02em;
+text-transform: uppercase;
+color: #6b7075;
+}
+
+.error-status {
+font-family: "JetBrainsMono", monospace;
+font-size: 12px;
+font-weight: 400;
+letter-spacing: .08em;
+color: #7b8085;
+text-transform: uppercase;
+}
+
+.error-no-select {
+user-select: none;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+}
+
+.error-main {
+flex: 1;
+min-height: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 100px;
+padding: 60px 80px;
+overflow-x: hidden;
+overflow-y: hidden;
+}
+
+.error-visual {
+width: 430px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
+
+.error-icon {
+width: 96px;
+height: 96px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 34px;
+color: #c62828;
+}
+
+.error-icon svg {
+width: 100%;
+height: 100%;
+}
+
+.error-code {
+font-family: "JetBrainsMono", monospace;
+font-size: clamp(96px, 13vw, 180px);
+font-weight: 400;
+line-height: .85;
+letter-spacing: -.08em;
+color: #15171a;
+text-align: center;
+}
+
+.error-content {
+width: 470px;
+max-width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+
+.error-label {
+margin-bottom: 18px;
+font-family: "JetBrainsMono", monospace;
+font-size: 13px;
+font-weight: 400;
+letter-spacing: .16em;
+color: #7b8085;
+text-align: center;
+text-transform: uppercase;
+}
+
+.error-content h1 {
+margin: 0 0 20px;
+font-family: "Manrope", sans-serif;
+font-size: clamp(34px, 4vw, 52px);
+font-weight: 400;
+line-height: 1.05;
+letter-spacing: -.035em;
+text-align: center;
+color: #15171a;
+}
+
+.error-content p {
+margin: 0;
+max-width: 430px;
+font-family: "Inter", sans-serif;
+font-size: 17px;
+font-weight: 400;
+line-height: 1.7;
+color: #60666c;
+text-align: center;
+}
+
+.error-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+margin-top: 36px;
+padding: 15px 20px;
+border: 1px solid #176b52;
+border-radius: 8px;
+font-family: "Inter", sans-serif;
+background: #176b52;
+color: #ffffff;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+letter-spacing: .01em;
+text-align: center;
+box-shadow: 0 7px 18px rgba(23, 107, 82, .18);
+transition: transform .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.error-button:hover {
+background: #1d7b5f;
+border-color: #1d7b5f;
+transform: translateY(-2px);
+box-shadow: 0 10px 22px rgba(23, 107, 82, .24);
+}
+
+.error-button:active {
+background: #145b46;
+border-color: #145b46;
+transform: translateY(0);
+box-shadow: 0 4px 10px rgba(23, 107, 82, .14);
+}
+
+.error-button-icon {
+width: 18px;
+height: 18px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
+
+.error-button-icon svg {
+width: 18px;
+height: 18px;
+}
+
+.error-button-arrow {
+font-size: 20px;
+line-height: 1;
+transition: transform .2s ease;
+}
+
+.error-button:hover .error-button-arrow {
+transform: translateX(3px);
+}
+
+.error-footer {
+height: 64px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 40px;
+border-top: 1px solid #e5e7e9;
+font-family: "Inter", sans-serif;
+font-size: 11px;
+font-weight: 400;
+color: #858a90;
+letter-spacing: .04em;
+text-transform: uppercase;
+flex-shrink: 0;
+}
+
+@media (max-width: 1000px) {
+.error-main {
+gap: 50px;
+padding: 50px;
+}
+
+.error-visual {
+width: 360px;
+}
+
+.error-content {
+width: 420px;
+}
+}
+
+@media (max-width: 800px) {
+html,
+body {
+overflow-x: hidden;
+overflow-y: hidden;
+}
+
+.error-page {
+height: 100vh;
+min-height: 0;
+overflow-x: hidden;
+overflow-y: hidden;
+padding: 16px;
+}
+
+.error-shell {
+height: calc(100vh - 32px);
+min-height: 0;
+}
+
+.error-main {
+flex-direction: column;
+gap: 56px;
+padding: 56px 32px;
+overflow-x: hidden;
+overflow-y: hidden;
+}
+
+.error-visual {
+width: 100%;
+}
+
+.error-content {
+width: 100%;
+max-width: 470px;
+}
+}
+
+@media (max-width: 480px) {
+.error-topbar {
+height: 60px;
+padding: 0 24px;
+}
+
+.error-status {
+display: none;
+}
+
+.error-main {
+padding: 48px 24px;
+}
+
+.error-icon {
+width: 68px;
+height: 68px;
+margin-bottom: 26px;
+}
+
+.error-code {
+font-size: clamp(90px, 25vw, 150px);
+}
+
+.error-content h1 {
+font-size: 36px;
+}
+
+.error-button {
+padding: 14px 20px;
+gap: 10px;
+}
+
+.error-button-icon {
+width: 17px;
+height: 17px;
+}
+
+.error-button-icon svg {
+width: 17px;
+height: 17px;
+}
+
+.error-footer {
+height: 64px;
+padding: 0 24px;
+gap: 0;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+text-align: left;
+}
+}
