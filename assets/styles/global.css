@@ -263,6 +263,7 @@ transform: translateX(3px);
 }
 
 .error-footer {
+position: relative;
 height: 64px;
 display: flex;
 align-items: center;
@@ -276,6 +277,14 @@ color: #858a90;
 letter-spacing: .04em;
 text-transform: uppercase;
 flex-shrink: 0;
+}
+
+.error-footer .error-ip {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+white-space: nowrap;
 }
 
 @media (max-width: 1000px) {

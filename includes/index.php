@@ -61,6 +61,10 @@ HTTP <?= htmlspecialchars((string) ($error['code'] ?? 500), ENT_QUOTES, 'UTF-8')
 <div class="error-no-select">
 HTTP Error System
 </div>
+
+<div class="error-no-select error-ip">
+Your IP: <?= htmlspecialchars(error_client_ip(), ENT_QUOTES, 'UTF-8') ?>
+</div>
 </footer>
 </div>
 </main>

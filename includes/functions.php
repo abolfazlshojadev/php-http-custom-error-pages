@@ -79,3 +79,14 @@ return $overrides[$host];
 
 return error_site_name_from_host($host);
 }
+
+function error_client_ip(): string
+{
+$ip = $_SERVER['REMOTE_ADDR'] ?? '';
+
+if (filter_var($ip, FILTER_VALIDATE_IP)) {
+return $ip;
+}
+
+return 'Unknown';
+}
