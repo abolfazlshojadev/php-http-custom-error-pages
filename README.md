@@ -1,4 +1,3 @@
-```
 PHP HTTP Custom Error Pages
 
 A professional, framework-independent HTTP error page system for PHP websites and shared hosting environments.
@@ -390,4 +389,3 @@ Abolfazl Shoja Dizaj
 22. Repository
 
 https://github.com/abolfazlshojadev/php-http-custom-error-pages
-```
